@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo isset($page_title) ? $page_title . ' - ' : ''; ?>AQUASTRUCT</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/"><span class="logo-icon">🎰</span> AQUASTRUCT</a>
+            </div>
+            <nav class="main-nav">
+                <a href="/">Home</a>
+                <a href="/games.php">Games</a>
+                <a href="/about.php">About</a>
+                <a href="/contact.php">Contact</a>
+            </nav>
+            <div class="credits-display">
+                💰 <span><?php echo format_credits(get_credits()); ?></span>
+            </div>
+        </div>
+    </header>
+    <main>

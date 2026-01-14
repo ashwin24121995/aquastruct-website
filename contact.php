@@ -1,0 +1,4 @@
+<?php require_once 'includes/config.php'; require_once 'includes/functions.php'; $page_title='Contact'; include 'includes/header.php'; ?>
+<section class="hero-section"><div class="container"><h1 class="hero-title">Contact Us</h1><p class="hero-subtitle">Get in Touch with AQUASTRUCT</p></div></section>
+<section class="features-section"><div class="container" style="max-width:600px;"><div class="feature-card" style="text-align:left;"><h3>Email</h3><p><?php echo SITE_EMAIL; ?></p></div><div class="feature-card" style="text-align:left;margin-top:30px;"><h3>Company Information</h3><p><strong><?php echo COMPANY_NAME; ?></strong></p><p>CIN: <?php echo COMPANY_CIN; ?></p><p>PAN: <?php echo COMPANY_PAN; ?></p><p><?php echo COMPANY_ADDRESS; ?></p></div></div></section>
+<?php include 'includes/footer.php'; ?>
