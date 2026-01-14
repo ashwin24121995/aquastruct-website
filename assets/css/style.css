@@ -252,7 +252,7 @@ main {
     position: relative;
     overflow: hidden;
     padding: var(--spacing-xl) 0;
-    background-image: url('../images/hero-bg.png');
+    background-image: url('../images/hero-bg.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

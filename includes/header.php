@@ -16,7 +16,7 @@ if (!function_exists('format_credits')) {
     <header class="site-header">
         <div class="container">
             <div class="logo">
-                <a href="/"><img src="/assets/images/logos/logo.png" alt="AQUASTRUCT" style="height: 45px;"></a>
+                <a href="/"><img src="/assets/images/logos/logo.webp" alt="AQUASTRUCT" style="height: 45px;"></a>
             </div>
             <nav class="main-nav">
                 <a href="/">Home</a>
