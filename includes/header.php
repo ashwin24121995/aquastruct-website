@@ -1,3 +1,8 @@
+<?php
+if (!function_exists('format_credits')) {
+    require_once __DIR__ . '/functions.php';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
