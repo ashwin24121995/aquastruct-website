@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Plinko Game - AQUASTRUCT";
+$page_title = "Plinko Game";
 include '../includes/header.php';
 ?>
 

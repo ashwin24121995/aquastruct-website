@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Chicken Game - AQUASTRUCT";
+$page_title = "Chicken Game";
 include '../includes/header.php';
 ?>
 
