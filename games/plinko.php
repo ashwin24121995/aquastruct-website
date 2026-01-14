@@ -1,4 +1,5 @@
 <?php
+require_once '../includes/config.php';
 $page_title = "Plinko Game";
 include '../includes/header.php';
 ?>
