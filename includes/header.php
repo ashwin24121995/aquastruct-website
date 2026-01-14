@@ -25,9 +25,7 @@ if (!function_exists('format_credits')) {
                 <a href="/about.php">About</a>
                 <a href="/contact.php">Contact</a>
             </nav>
-            <div class="credits-display">
-                💰 <span><?php echo format_credits(get_credits()); ?></span>
-            </div>
+
         </div>
     </header>
     <main>
