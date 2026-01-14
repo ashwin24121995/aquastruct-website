@@ -30,3 +30,9 @@ Frontend development in progress. Website files being uploaded.
 ---
 
 © 2026 AQUASTRUCT CONSTRUCTION PRIVATE LIMITED
+
+
+## Live Website
+Visit: https://aquastruct-website-production.up.railway.app/
+
+Last updated: Wed Jan 14 09:29:30 EST 2026
