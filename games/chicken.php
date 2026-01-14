@@ -400,6 +400,55 @@ include '../includes/header.php';
 </div>
 
 <script>
+    // Sound Effects System
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    function playSound(type) {
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        switch(type) {
+            case 'click':
+                oscillator.frequency.value = 800;
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.1);
+                break;
+            case 'egg':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(880, audioCtx.currentTime);
+                oscillator.frequency.setValueAtTime(1046, audioCtx.currentTime + 0.05);
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.2);
+                break;
+            case 'bone':
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.3);
+                gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.5);
+                break;
+            case 'cashout':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(523, audioCtx.currentTime);
+                oscillator.frequency.setValueAtTime(659, audioCtx.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(784, audioCtx.currentTime + 0.2);
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.4);
+                break;
+        }
+    }
+
     // Game State
     let credits = parseInt(localStorage.getItem('credits')) || 1000;
     let gameActive = false;
@@ -430,6 +479,7 @@ include '../includes/header.php';
 
     function setBet(amount) {
         if (gameActive) return;
+        playSound('click');
         const maxBet = Math.min(amount, credits, 500);
         document.getElementById('betAmount').value = maxBet;
     }
@@ -444,6 +494,7 @@ include '../includes/header.php';
     }
 
     function startGame() {
+        playSound('click');
         const betAmount = parseInt(document.getElementById('betAmount').value) || 0;
         const difficulty = document.getElementById('difficulty').value;
         
@@ -502,11 +553,13 @@ include '../includes/header.php';
         
         if (bonePositions.includes(index)) {
             // Hit a bone - game over
+            playSound('bone');
             box.classList.add('bone');
             box.innerHTML = '🦴';
             gameOver(false);
         } else {
             // Found an egg
+            playSound('egg');
             box.classList.add('egg');
             box.innerHTML = '🥚';
             eggsCollected++;
@@ -529,6 +582,7 @@ include '../includes/header.php';
 
     function cashOut() {
         if (!gameActive) return;
+        playSound('cashout');
         gameOver(true);
     }
 

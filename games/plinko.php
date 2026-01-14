@@ -379,6 +379,58 @@ include '../includes/header.php';
 </div>
 
 <script>
+    // Sound Effects System
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    function playSound(type) {
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        switch(type) {
+            case 'click':
+                oscillator.frequency.value = 800;
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.1);
+                break;
+            case 'drop':
+                oscillator.frequency.value = 400;
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.2);
+                break;
+            case 'bounce':
+                oscillator.frequency.value = 1000;
+                gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.05);
+                break;
+            case 'win':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(523, audioCtx.currentTime);
+                oscillator.frequency.setValueAtTime(659, audioCtx.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(784, audioCtx.currentTime + 0.2);
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.4);
+                break;
+            case 'lose':
+                oscillator.frequency.value = 150;
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.5);
+                break;
+        }
+    }
+
     // Game State
     let credits = parseInt(localStorage.getItem('credits')) || 1000;
     let isDropping = false;
@@ -402,11 +454,15 @@ include '../includes/header.php';
         drawBoard();
         updateMultipliers();
         
-        document.getElementById('riskLevel').addEventListener('change', updateMultipliers);
+        document.getElementById('riskLevel').addEventListener('change', function() {
+            playSound('click');
+            updateMultipliers();
+        });
     });
 
     function setBet(amount) {
         if (isDropping) return;
+        playSound('click');
         const maxBet = Math.min(amount, credits, 500);
         document.getElementById('betAmount').value = maxBet;
     }
@@ -497,6 +553,7 @@ include '../includes/header.php';
         updateCreditsDisplay();
         
         // Start animation
+        playSound('drop');
         isDropping = true;
         document.getElementById('dropButton').disabled = true;
         
@@ -588,10 +645,12 @@ include '../includes/header.php';
         
         // Show result
         if (multiplier >= 1) {
+            playSound('win');
             setTimeout(() => {
                 alert(`🎉 YOU WIN!\n\nMultiplier: ${multiplier}x\nWinnings: ${winAmount} credits`);
             }, 300);
         } else {
+            playSound('lose');
             setTimeout(() => {
                 alert(`😢 Better luck next time!\n\nMultiplier: ${multiplier}x\nWinnings: ${winAmount} credits`);
             }, 300);

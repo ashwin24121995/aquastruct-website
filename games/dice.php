@@ -451,6 +451,51 @@ include '../includes/header.php';
 </div>
 
 <script>
+    // Sound Effects System
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    function playSound(type) {
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        switch(type) {
+            case 'click':
+                oscillator.frequency.value = 800;
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.1);
+                break;
+            case 'roll':
+                oscillator.frequency.value = 200;
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.3);
+                break;
+            case 'win':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(523, audioCtx.currentTime);
+                oscillator.frequency.setValueAtTime(659, audioCtx.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(784, audioCtx.currentTime + 0.2);
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.4);
+                break;
+            case 'lose':
+                oscillator.frequency.value = 150;
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + 0.5);
+                break;
+        }
+    }
+
     // Game State
     let credits = parseInt(localStorage.getItem('credits')) || 1000;
     let selectedPrediction = null;
@@ -467,6 +512,7 @@ include '../includes/header.php';
             btn.addEventListener('click', function() {
                 if (isRolling) return;
                 
+                playSound('click');
                 document.querySelectorAll('.prediction-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 selectedPrediction = this.dataset.prediction;
@@ -491,6 +537,7 @@ include '../includes/header.php';
     });
 
     function setBet(amount) {
+        playSound('click');
         const maxBet = Math.min(amount, credits, 500);
         document.getElementById('betAmount').value = maxBet;
         updatePotentialWin();
@@ -540,6 +587,7 @@ include '../includes/header.php';
         }
         
         // Start rolling
+        playSound('roll');
         isRolling = true;
         document.getElementById('rollButton').disabled = true;
         document.getElementById('resultDisplay').innerHTML = '';
@@ -597,14 +645,14 @@ include '../includes/header.php';
         document.getElementById('totalRolls').textContent = totalRolls;
         
         if (won) {
+            playSound('win');
             credits += winAmount - betAmount;
             totalWins++;
             document.getElementById('totalWins').textContent = totalWins;
-            showResult(`🎉 YOU WIN! Total: ${total} | +${winAmount} credits`, 'win');
-        } else {
+            showResult(`🎉 YOU WIN! Total: ${total} | +${winAmount} credits`, 'win');        } else {
+            playSound('lose');
             credits -= betAmount;
-            showResult(`😢 YOU LOSE! Total: ${total} | -${betAmount} credits`, 'lose');
-        }
+            showResult(`😢 You Lost!\n\nTotal: ${total}\nLost: ${betAmount} credits`, 'lose');   }
         
         updateCreditsDisplay();
         
