@@ -11,7 +11,7 @@
     <header class="site-header">
         <div class="container">
             <div class="logo">
-                <a href="/"><span class="logo-icon">🎰</span> AQUASTRUCT</a>
+                <a href="/"><img src="/assets/images/logos/logo.png" alt="AQUASTRUCT" style="height: 45px;"></a>
             </div>
             <nav class="main-nav">
                 <a href="/">Home</a>

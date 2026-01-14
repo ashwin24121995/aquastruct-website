@@ -20,28 +20,28 @@ include 'includes/header.php';
         <h2 class="section-title">Our Games</h2>
         <div class="game-grid">
             <div class="game-card">
-                <div class="game-icon">🎲</div>
+                <div class="game-icon"><img src="/assets/images/games/dice-icon.png" alt="Dice" style="width: 120px; height: 120px; border-radius: 15px;"></div>
                 <h3>DICE</h3>
                 <p>Roll the dice and predict outcomes with exciting multipliers</p>
                 <span class="bet-range">Bet: 1-500 credits</span>
                 <a href="/games/dice.php" class="btn btn-game">Play Dice</a>
             </div>
             <div class="game-card">
-                <div class="game-icon">💎</div>
+                <div class="game-icon"><img src="/assets/images/games/mines-icon.png" alt="Mines" style="width: 120px; height: 120px; border-radius: 15px;"></div>
                 <h3>MINES</h3>
                 <p>Reveal tiles, avoid mines, and collect progressive rewards</p>
                 <span class="bet-range">Bet: 1-500 credits</span>
                 <a href="/games/mines.php" class="btn btn-game">Play Mines</a>
             </div>
             <div class="game-card">
-                <div class="game-icon">🎯</div>
+                <div class="game-icon"><img src="/assets/images/games/plinko-icon.png" alt="Plinko" style="width: 120px; height: 120px; border-radius: 15px;"></div>
                 <h3>PLINKO</h3>
                 <p>Drop the ball and watch it bounce to amazing prizes</p>
                 <span class="bet-range">Bet: 1-500 credits</span>
                 <a href="/games/plinko.php" class="btn btn-game">Play Plinko</a>
             </div>
             <div class="game-card">
-                <div class="game-icon">🐔</div>
+                <div class="game-icon"><img src="/assets/images/games/chicken-icon.png" alt="Chicken" style="width: 120px; height: 120px; border-radius: 15px;"></div>
                 <h3>CHICKEN</h3>
                 <p>Guide your chicken through obstacles and collect golden eggs</p>
                 <span class="bet-range">Bet: 1-500 credits</span>
