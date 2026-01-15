@@ -7,6 +7,7 @@ if (!function_exists('format_credits')) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-site-verification" content="MnmPxEe20s_QnEFiVR9xQfPBa9TuHn0l7-1y5wKD7WU" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo isset($page_title) ? $page_title . ' - ' : ''; ?>AQUASTRUCT</title>
     <link rel="stylesheet" href="/assets/css/style.css">
