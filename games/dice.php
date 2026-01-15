@@ -651,10 +651,12 @@ include '../includes/header.php';
             credits += winAmount - betAmount;
             totalWins++;
             document.getElementById('totalWins').textContent = totalWins;
-            toast.success('🎉 YOU WIN!', `Dice Total: ${total}`, { 'Winnings': `+${winAmount} credits`, 'New Balance': credits });        } else {
+            toast.success('🎉 YOU WIN!', `Dice Total: ${total}`, { 'Winnings': `+${winAmount} credits`, 'New Balance': credits });
+        } else {
             playSound('lose');
             credits -= betAmount;
-            toast.error('😢 YOU LOST!', `Dice Total: ${total}`, { 'Lost': `${betAmount} credits`, 'Balance': credits });   }
+            toast.error('😢 YOU LOST!', `Dice Total: ${total}`, { 'Lost': `${betAmount} credits`, 'Balance': credits });
+        }
         
         updateCreditsDisplay();
         
@@ -663,9 +665,6 @@ include '../includes/header.php';
             isRolling = false;
             document.getElementById('rollButton').disabled = false;
         }, 1000);
-    }
-
-">${message}</div>`;
     }
 </script>
 
