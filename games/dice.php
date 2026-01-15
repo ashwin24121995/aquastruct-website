@@ -3,6 +3,8 @@ require_once '../includes/config.php';
 $page_title = "Dice Game";
 include '../includes/header.php';
 ?>
+<link rel="stylesheet" href="../assets/css/toast.css">
+<script src="../assets/js/toast.js"></script>
 
 <style>
     /* Game Container - Single Screen Layout */
@@ -572,17 +574,17 @@ include '../includes/header.php';
         
         // Validation
         if (!selectedPrediction) {
-            showResult('Please select a prediction!', 'lose');
+            toast.warning('⚠️ Selection Required', 'Please select a prediction first!');
             return;
         }
         
         if (betAmount < 1 || betAmount > 500) {
-            showResult('Bet must be between 1-500 credits!', 'lose');
+            toast.warning('⚠️ Invalid Bet', 'Bet must be between 1-500 credits!');
             return;
         }
         
         if (betAmount > credits) {
-            showResult('Insufficient credits!', 'lose');
+            toast.error('❌ Insufficient Credits', "You don't have enough credits for this bet!");
             return;
         }
         
@@ -649,10 +651,10 @@ include '../includes/header.php';
             credits += winAmount - betAmount;
             totalWins++;
             document.getElementById('totalWins').textContent = totalWins;
-            showResult(`🎉 YOU WIN! Total: ${total} | +${winAmount} credits`, 'win');        } else {
+            toast.success('🎉 YOU WIN!', `Dice Total: ${total}`, { 'Winnings': `+${winAmount} credits`, 'New Balance': credits });        } else {
             playSound('lose');
             credits -= betAmount;
-            showResult(`😢 You Lost!\n\nTotal: ${total}\nLost: ${betAmount} credits`, 'lose');   }
+            toast.error('😢 YOU LOST!', `Dice Total: ${total}`, { 'Lost': `${betAmount} credits`, 'Balance': credits });   }
         
         updateCreditsDisplay();
         
@@ -663,9 +665,7 @@ include '../includes/header.php';
         }, 1000);
     }
 
-    function showResult(message, type) {
-        const resultDisplay = document.getElementById('resultDisplay');
-        resultDisplay.innerHTML = `<div class="result-message ${type}">${message}</div>`;
+">${message}</div>`;
     }
 </script>
 

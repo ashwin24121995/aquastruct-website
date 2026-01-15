@@ -3,6 +3,8 @@ require_once '../includes/config.php';
 $page_title = "Chicken Game";
 include '../includes/header.php';
 ?>
+<link rel="stylesheet" href="../assets/css/toast.css">
+<script src="../assets/js/toast.js"></script>
 
 <style>
     /* Game Container - Single Screen Layout */
@@ -500,12 +502,12 @@ include '../includes/header.php';
         
         // Validation
         if (betAmount < 1 || betAmount > 500) {
-            alert('Bet must be between 1-500 credits!');
+            toast.warning('⚠️ Invalid Bet', 'Bet must be between 1-500 credits!');
             return;
         }
         
         if (betAmount > credits) {
-            alert('Insufficient credits!');
+            toast.error('❌ Insufficient Credits', "You don't have enough credits for this bet!");
             return;
         }
         
@@ -606,11 +608,11 @@ include '../includes/header.php';
             updateCreditsDisplay();
             
             setTimeout(() => {
-                alert(`🎉 YOU WIN! 🎉\n\nEggs Found: ${eggsCollected}\nMultiplier: ${currentMultiplier.toFixed(2)}x\nWinnings: ${winAmount} credits`);
+                toast.success('🎉 YOU WIN!', `You found ${eggsCollected} golden eggs!`, { 'Multiplier': `${currentMultiplier.toFixed(2)}x`, 'Winnings': `${winAmount} credits`, 'Balance': credits });
             }, 500);
         } else {
             setTimeout(() => {
-                alert(`🦴 GAME OVER! 🦴\n\nYou hit a bone!\nEggs Found: ${eggsCollected}\nLost: ${currentBet} credits`);
+                toast.error('🦴 GAME OVER!', `You hit a bone! Found ${eggsCollected} eggs`, { 'Lost': `${currentBet} credits`, 'Balance': credits });
             }, 500);
         }
         

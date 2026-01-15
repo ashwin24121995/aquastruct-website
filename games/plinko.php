@@ -3,6 +3,8 @@ require_once '../includes/config.php';
 $page_title = "Plinko Game";
 include '../includes/header.php';
 ?>
+<link rel="stylesheet" href="../assets/css/toast.css">
+<script src="../assets/js/toast.js"></script>
 
 <style>
     /* Game Container - Single Screen Layout */
@@ -539,12 +541,12 @@ include '../includes/header.php';
         
         // Validation
         if (betAmount < 1 || betAmount > 500) {
-            alert('Bet must be between 1-500 credits!');
+            toast.warning('⚠️ Invalid Bet', 'Bet must be between 1-500 credits!');
             return;
         }
         
         if (betAmount > credits) {
-            alert('Insufficient credits!');
+            toast.error('❌ Insufficient Credits', "You don't have enough credits for this bet!");
             return;
         }
         
@@ -647,12 +649,12 @@ include '../includes/header.php';
         if (multiplier >= 1) {
             playSound('win');
             setTimeout(() => {
-                alert(`🎉 YOU WIN!\n\nMultiplier: ${multiplier}x\nWinnings: ${winAmount} credits`);
+                toast.success('🎉 YOU WIN!', `Ball landed on ${multiplier}x multiplier!`, { 'Multiplier': `${multiplier}x`, 'Winnings': `${winAmount} credits`, 'Balance': credits });
             }, 300);
         } else {
             playSound('lose');
             setTimeout(() => {
-                alert(`😢 Better luck next time!\n\nMultiplier: ${multiplier}x\nWinnings: ${winAmount} credits`);
+                toast.error('😢 Better Luck Next Time!', `Ball landed on ${multiplier}x multiplier`, { 'Multiplier': `${multiplier}x`, 'Winnings': `${winAmount} credits`, 'Balance': credits });
             }, 300);
         }
         

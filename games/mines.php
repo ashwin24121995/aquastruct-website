@@ -3,6 +3,8 @@ require_once '../includes/config.php';
 $page_title = "Mines Game";
 include '../includes/header.php';
 ?>
+<link rel="stylesheet" href="../assets/css/toast.css">
+<script src="../assets/js/toast.js"></script>
 
 <style>
     /* Game Container - Single Screen Layout */
@@ -510,12 +512,12 @@ include '../includes/header.php';
         
         // Validation
         if (betAmount < 1 || betAmount > 500) {
-            alert('Bet must be between 1-500 credits!');
+            toast.warning('⚠️ Invalid Bet', 'Bet must be between 1-500 credits!');
             return;
         }
         
         if (betAmount > credits) {
-            alert('Insufficient credits!');
+            toast.error('❌ Insufficient Credits', "You don't have enough credits for this bet!");
             return;
         }
         
@@ -614,11 +616,11 @@ include '../includes/header.php';
             updateCreditsDisplay();
             
             setTimeout(() => {
-                alert(`🎉 YOU WIN! 🎉\n\nMultiplier: ${currentMultiplier.toFixed(2)}x\nWinnings: ${winAmount} credits`);
+                toast.success('🎉 YOU WIN!', `You successfully cashed out!`, { 'Multiplier': `${currentMultiplier.toFixed(2)}x`, 'Winnings': `${winAmount} credits`, 'Balance': credits });
             }, 500);
         } else {
             setTimeout(() => {
-                alert(`💣 BOOM! 💣\n\nYou hit a mine!\nLost: ${currentBet} credits`);
+                toast.error('💣 BOOM!', 'You hit a mine!', { 'Lost': `${currentBet} credits`, 'Balance': credits });
             }, 500);
         }
         
