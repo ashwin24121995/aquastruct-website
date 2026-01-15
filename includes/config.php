@@ -4,10 +4,8 @@
  * Company: AQUASTRUCT CONSTRUCTION PRIVATE LIMITED
  */
 
-// Start session
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Load security headers FIRST (before any output)
+require_once __DIR__ . '/security.php';
 
 // Site Configuration
 define('SITE_NAME', 'AQUASTRUCT');
@@ -36,9 +34,8 @@ if (!isset($_SESSION['credits'])) {
     $_SESSION['credits'] = STARTING_CREDITS;
 }
 
-// Error Reporting (set to 0 in production)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Error Reporting (handled by security.php)
+// Production mode - errors are logged, not displayed
 
 // Timezone
 date_default_timezone_set('Asia/Kolkata');
