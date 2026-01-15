@@ -3,7 +3,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/</loc>
+    <loc>https://coustommatch.com/</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,14 +11,14 @@
   
   <!-- Main Pages -->
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/about.php</loc>
+    <loc>https://coustommatch.com/about.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/contact.php</loc>
+    <loc>https://coustommatch.com/contact.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -26,28 +26,28 @@
   
   <!-- Games -->
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/games/dice.php</loc>
+    <loc>https://coustommatch.com/games/dice.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/games/mines.php</loc>
+    <loc>https://coustommatch.com/games/mines.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/games/plinko.php</loc>
+    <loc>https://coustommatch.com/games/plinko.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/games/chicken.php</loc>
+    <loc>https://coustommatch.com/games/chicken.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -55,28 +55,28 @@
   
   <!-- Legal Pages -->
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/privacy.php</loc>
+    <loc>https://coustommatch.com/privacy.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/terms.php</loc>
+    <loc>https://coustommatch.com/terms.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/disclaimer.php</loc>
+    <loc>https://coustommatch.com/disclaimer.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://aquastruct-website-production.up.railway.app/community-rules.php</loc>
+    <loc>https://coustommatch.com/community-rules.php</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

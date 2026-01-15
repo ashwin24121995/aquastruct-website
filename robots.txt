@@ -1,11 +1,11 @@
 # robots.txt for AQUASTRUCT Casino Website
-# https://aquastruct-website-production.up.railway.app/
+# https://coustommatch.com/
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://aquastruct-website-production.up.railway.app/sitemap.xml
+Sitemap: https://coustommatch.com/sitemap.xml
 
 # Allow all game pages
 Allow: /games/
